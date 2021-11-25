@@ -1,0 +1,20 @@
+header{
+    height: 4rem;
+
+    .wrapper{
+        height: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+}
+
+.menu{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    .link{
+        padding: .5em .75em;
+    }
+}

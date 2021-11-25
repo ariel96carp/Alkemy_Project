@@ -1,0 +1,83 @@
+@mixin media-quarie($breakpoint){
+    @if map-has-key($breakpoints, $breakpoint){
+        @media screen and (min-width: px-to-rem(map-get($breakpoints, $breakpoint))){
+            @content;
+        }
+    }
+    @else if type-of($breakpoint) == number{
+        @if unit($breakpoint) == "px" or unit($breakpoint) == "rem" or unit($breakpoint) == "em"{
+            @if unit($breakpoint) == "px"{
+                @media screen and (min-width: px-to-rem($breakpoint)){
+                    @content;
+                }
+            }
+            @else{
+                @media screen and (min-width: $breakpoint){
+                    @content;
+                }
+            }
+        }
+        @else
+        {
+            @error "La unidad ingresada debe ser `px`, `rem` o `em`.";
+        }
+    } 
+    @else{
+        @error "EL valor ingresado no corresponde a un número.";
+    }
+}
+
+@mixin fluid-typography($min-width, $max-width, $min-font, $max-font){
+    font-size: #{$min-font};
+
+    @include media-quarie($min-width){
+        font-size: calc(#{$min-font} + (#{strip-unit($max-font - $min-font)}) * ((100vw - #{breakpoint-finder($min-width)}) / #{strip-unit(breakpoint-finder($max-width) - breakpoint-finder($min-width))}))
+    }
+
+    @include media-quarie($max-width){
+        font-size: #{$max-font};
+    }
+}
+
+@mixin toggle-menu($middle){
+    $border-radius: 3px;
+    @if type-of($middle) == string{
+        &::before{
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 20%;
+            background-color: map-get($colors, primary-color);
+            border-radius: $border-radius 0 0 $border-radius;
+        }
+    
+        &::after{
+            content: "";
+            display: block;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 60%;
+            height: 20%;
+            background-color: map-get($colors, primary-color);
+            border-radius: $border-radius 0 0 $border-radius;
+        }
+    
+        .#{$middle}{
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            width: 80%;
+            height: 20%;
+            background-color: map-get($colors, primary-color);
+            border-radius: $border-radius 0 0 $border-radius;
+        }
+    }
+    @else{
+        @error "El valor ingresado debe ser de tipo `string`";
+    }
+}

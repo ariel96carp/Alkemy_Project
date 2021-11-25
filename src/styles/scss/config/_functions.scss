@@ -1,0 +1,50 @@
+@function px-to-rem ($value, $base: 16px){
+    @if type-of($value) == number{
+        @if unit($value) == "px"{
+            @return $value / $base * 1rem;
+        }
+        @else{
+            @error "La unidad ingresada debe ser `px`.";
+        }
+    }
+    @else{
+        @error "El valor ingresado no corresponde a un número.";
+    } 
+}
+
+@function breakpoint-finder($breakpoint){
+    @if map-has-key($breakpoints, $breakpoint){
+        @return px-to-rem(map-get($breakpoints, $breakpoint));
+    }
+    @else if type-of($breakpoint) == number{
+        @if unit($breakpoint) == "px" or unit($breakpoint) == "rem" or unit($breakpoint) == "em"{
+            @if unit($breakpoint) == "px"{
+                @return px-to-rem($breakpoint);
+            }
+            @else{
+                @return $breakpoint;
+            }
+        }
+        @else{
+            @error "La unidad ingresada debe ser `px`, `rem` o `em`.";
+        }
+    }
+    @else{
+        @error "El valor ingresado no corresponde a un número.";
+    }
+}
+
+@function strip-unit($number) {
+    @if type-of($number) == number{
+        @if not unitless($number){
+            @return $number / ($number * 0 + 1);
+        }
+        @else{
+            @error "El valor ingresado debe tener unidades.";
+        }
+    } 
+    @else
+    {
+        @error "El valor ingresado no corresponde a un número.";
+    }
+}

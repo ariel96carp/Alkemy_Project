@@ -1,0 +1,62 @@
+// PUNTOS DE QUIEBRE
+$breakpoints:(
+    small: 320px,
+    medium: 640px,
+    large: 1024px,
+    xlarge: 1440px
+);
+
+// VARIABLES DEL CONTENEDOR (WRAPPER)
+$min-wrapper-width : map-get($breakpoints, small);
+$max-wrapper-width : 1200px;
+
+// VARIABLES DE APILAMIENTO
+:root{
+    --z-back: -10;
+    --z-normal: 1;
+    --z-tooltip: 10;
+    --z-fixed: 100;
+    --z-modal: 1000;
+}
+
+// PALETA DE COLORES
+$colors:(
+    primary-color: hsl(196, 100, 41),
+    secondary-color: white,
+    tertiary-color: hsl(186, 0, 93),
+    error-color: hsl(4, 85, 58),
+    succesful-color: hsl(140, 100, 40),
+    header-color: hsl(127, 0, 26)
+);
+
+// VARIABLES DE FUENTE
+@font-face{
+    font-family: "regular-font";
+    font-style: normal;
+    font-weight: 400;
+    font-display: fallback;
+    src: local("roboto-regular"), local("Roboto-Regular"), url("../fonts/Roboto-Regular.ttf");
+}
+
+@font-face{
+    font-family: "medium-font";
+    font-style: normal;
+    font-weight: 500;
+    font-display: fallback;
+    src: local("roboto-medium"), local("Roboto-Medium"), url("../fonts/Roboto-Medium.ttf");
+}
+
+@font-face{
+    font-family: "bold-font";
+    font-style: normal;
+    font-weight: 700;
+    font-display: fallback;
+    src: local("roboto-bold"), local("Roboto-Bold"), url("../fonts/Roboto-Bold.ttf");
+}
+
+:root{
+    --regular-font: "regular-font", sans serif;
+    --medium-font: "medium-font", sans serif;
+    --bold-font: "bold-font", sans serif;
+}
+

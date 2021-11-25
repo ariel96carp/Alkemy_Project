@@ -1,0 +1,47 @@
+.login-form{
+    margin-top: 1rem;
+    padding: .75em;
+    background-color: map-get($colors, secondary-color);
+    border-radius: 3px;
+    box-shadow: 1px 1px 4px hsl(196, 0%, 82%);
+
+    .login-input{
+        margin-bottom: px-to-rem(20px);
+    }
+
+    input{
+        width: 100%;
+    }
+
+    @include media-quarie(medium){
+        margin-top: 2rem;
+        padding: 1em;
+    }
+
+    .title{
+        margin-bottom: 1rem;
+        font-family: var(--bold-font);
+        font-size: 2em;
+
+        @include media-quarie(medium){
+            margin-bottom: 1.5rem;
+        }
+    }
+}
+
+.login-input{
+    label{
+        display: block;
+        margin-bottom: .5rem;
+    }
+
+    input{
+        padding: .75em .5em;
+        border: 1px solid hsl(196, 0, 86);
+        outline: 0;
+
+        &:focus{
+            outline: 1.5px solid map-get($colors, primary-color);
+        }
+    }
+}

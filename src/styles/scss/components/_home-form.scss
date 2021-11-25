@@ -1,0 +1,50 @@
+.home-form{
+    background-color: map-get($colors, secondary-color);
+
+    .title-container{
+        background-color: hsl(164, 100, 48);
+        color: map-get($colors, secondary-color);
+        height: 8rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: .5em;
+
+        @include media-quarie(medium){
+            height: 10rem;
+        }
+    }
+
+    .input-m{
+        margin: 0;
+    }
+}
+
+.title-container{
+    .title{
+        font-family: var(--bold-font);
+        font-size: 2em;
+        margin: 0;
+    }
+
+    .description{
+        margin: 0;
+    }
+}
+
+.home-input{
+    padding: .5em 0;
+
+    label{
+        display: block;
+        margin-bottom: .5rem;
+    }
+
+    .button{
+        margin-left: .15rem;
+    }
+
+    .input{
+        border: 1px solid map-get($colors, tertiary-color);
+    }
+}

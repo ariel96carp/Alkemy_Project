@@ -1,0 +1,28 @@
+.details-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(px-to-rem(250px), 1fr));
+
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.details{
+    padding: .5em .5em 0;
+    background-color: map-get($colors, secondary-color);
+
+    p{
+        margin-top: 0;
+    }
+
+    .upper-style{
+        text-transform: capitalize;
+    }
+
+    .details-title{
+        font-family: var(--bold-font);
+        text-decoration: underline;
+    }
+}
